@@ -1,0 +1,46 @@
+# name: MLOps CICD
+# on:
+#   push:
+#     branches: [main]
+#     # paths:
+#     # - '*.ipynb'
+  
+# env:
+#   GCS: "vocal-partition-435815-p8-vertex-ai"
+  
+  
+# jobs:
+#   jupyter-notebook-cicd:
+#     name:  Jupyter Notebook CICD 
+#     runs-on: ubuntu-latest
+#     permissions:
+#       contents: 'read'
+#       id-token: 'write'
+#     outputs: 
+#       notebook_files: ${{ steps.getnotebooks.outputs.notebook_files }}
+
+#     steps:
+
+#       - name: Checkout Code
+#         uses: actions/checkout@v3
+#         with:
+#           fetch-depth: '0'
+
+#       - name: Authenticate with Google Cloud
+#         uses: 'google-github-actions/auth@v2'
+#         with:
+#           service_account: ${{ secrets.SERVICE_ACCOUNT }}
+#           workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+
+#       - name: Set up gcloud SDK
+#         uses: 'google-github-actions/setup-gcloud@v2'
+#         with:
+#           version: '>= 363.0.0'
+
+#       - name: Execute Jupyter Notebook on Vertex AI
+#         uses: google-github-actions/run-vertexai-notebook@v0.0.5
+#         with:
+#             gcs_source_bucket: ${{ env.GCS_SOURCE }}
+#             gcs_output_bucket: ${{ env.GCS_OUTPUT }}
+#             allowlist: src/Salary_Linear_Regression.ipynb
+#             region: us-east1

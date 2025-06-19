@@ -1,2 +1,3 @@
 # machine-learning
-This repo contains sample jupyter notebooks for basic machine learning models.
+This repo contains sample Jupyter Notebooks and GitHub Actions workflow for implementing MLOps & Machine Learning models.
+
